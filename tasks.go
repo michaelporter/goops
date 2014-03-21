@@ -1,5 +1,12 @@
 package main
 
+func prepareGrainBag(j *Jeff) {
+	for {
+		gb := <-readyForPrep
+		j.PrepareBag(gb)
+		readyForPrimary <- gb
+	}
+}
 func packPrimary(j *Jeff) {
 	for {
 		gb := <-readyForPrimary

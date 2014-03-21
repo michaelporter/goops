@@ -4,6 +4,11 @@ type Jeff struct {
 	Ops int
 }
 
+func (j *Jeff) PrepareBag(gb *GrainBag) {
+	j.Ops = j.Ops + 1
+	return
+}
+
 func (j *Jeff) FillPrimary(gb *GrainBag) {
 	gb.FillPrimary()
 	j.Ops = j.Ops + 1
